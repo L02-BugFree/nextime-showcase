@@ -20,19 +20,19 @@ function toggleHeader() {
 }
 
 // Injected Slideshow Images
-const slideShowContainer = document.querySelector("#slideshow");
-const appScreens = [
-    "assets/images/home/screen1.png",
-    "assets/images/home/screen2.png",
-    "assets/images/home/screen3.png"
-];
+// const slideShowContainer = document.querySelector("#slideshow");
+// const appScreens = [
+//     "assets/images/home/screen1.png",
+//     "assets/images/home/screen2.png",
+//     "assets/images/home/screen3.png"
+// ];
 
-appScreens.forEach(src => {
-    const slide = document.createElement("div");
-    slide.className = "swiper-slide tw-rounded-xl tw-overflow-hidden !tw-h-[450px]";
-    slide.innerHTML = `<img src="${src}" class="tw-object-cover tw-w-full tw-h-full" alt="App Screen">`;
-    slideShowContainer.appendChild(slide);
-});
+// appScreens.forEach(src => {
+//     const slide = document.createElement("div");
+//     slide.className = "swiper-slide tw-rounded-xl tw-overflow-hidden !tw-h-[450px]";
+//     slide.innerHTML = `<img src="${src}" class="tw-object-cover tw-w-full tw-h-full" alt="App Screen">`;
+//     slideShowContainer.appendChild(slide);
+// });
 
 // Keywords Scroller
 const keywords = ["Schedule Overlay", "Prompt to Checklist", "Nhóm bạn", "Câu lạc bộ", "Công ty", "Gia đình", "Dự án", "Họp mặt", "Smart Chat", "AI Assistant"];
