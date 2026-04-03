@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --bg-color: #fff;
+    --btn-color: #fdfdfd;
+    --btn-bg: #000;
+    --primary-blue: #155eef;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.tw-text-primary-blue {
+    color: var(--primary-blue);
+}
+
+header > .collapsible-header{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    background-color: inherit;
+    place-content: center;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    min-width: fit-content;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s;
+}
+
+.header-links:hover {
+    color: var(--primary-blue);
+}
+
+.edge-gradient{
+    background: linear-gradient(83deg, #ffffff 0%, #ffffff00 20%, #ffffff00 80%, rgb(255, 255, 255) 100%);
+}
+
+.scroller{
+    animation: scroll_anim 40s forwards linear infinite;
+}
+
+.scroller[data-direction="right"] { animation-direction: reverse; }
+.scroller[data-speed="slow"]{ animation-duration: 80s; }
+
+@keyframes scroll_anim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.carousel-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 800px;
+}
+  
+.carousel {
+    display: inline-block;
+    animation: scroll_carousel 15s linear infinite;
+}
+
+@keyframes scroll_carousel {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-30%); }
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    color: #000;
+    font-weight: bold;
+    z-index: 10;
+}
+.next { right: 0; }
+.prev { left: 0; }
+
+.faq .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s;
+    background-color: #f9fafb;
+}
+
+@media not all and (min-width: 1024px) {
+    header .collapsible-header {
+        position: fixed;
+        right: 0;
+        flex-direction: column;
+        opacity: 0;
+        height: 100vh;
+        width: 0;
+        padding-top: 10%;
+        background-color: #000;
+        color: #fff;
+        transition: all 0.3s;
+    }
+    .header-links { color: #fff; }
+}

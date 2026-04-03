@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NexTime - Sắp xếp lịch trình, kết nối tức thì</title>
+        <meta name="description" content="Ứng dụng chat nhóm đột phá tích hợp AI tự động xếp chồng lịch rảnh và quản lý công việc." />
+        <link
+            rel="shortcut icon"
+            href="./assets/logo/logo.png"
+            type="image/x-icon"
+        />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:title" content="NexTime - Smart Scheduling Chat App" />
+        <meta property="og:description" content="Tìm giờ rảnh nhóm trong nháy mắt với công nghệ Schedule Overlay." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nextime.app" />
+        <meta property="og:image" content="./assets/og-image.png" />
+
+        <link rel="stylesheet" href="./css/tailwind-build.css">
+        <link rel="stylesheet" href="css/index.css" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+            xintegrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body
+        class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-white tw-text-black"
+    >
+        <header
+            class="tw-max-w-lg:tw-px-4 tw-max-w-lg:tw-mr-auto tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] lg:tw-justify-around"
+        >
+            <a class="tw-h-[50px] tw-w-[50px] tw-p-[4px] tw-flex tw-items-center tw-gap-2" href="">
+                <img
+                    src="./assets/logo/logo.png"
+                    alt="logo NexTime"
+                    class="tw-object-contain tw-h-full tw-w-full"
+                />
+                <span class="tw-font-bold tw-text-xl tw-tracking-tighter">NexTime</span>
+            </a>
+            <div
+                class="collapsible-header animated-collapse max-lg:tw-shadow-md"
+                id="collapsed-header-items"
+            >
+                <div
+                    class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center"
+                >
+                    <a class="header-links" href="#hero-section"> Trang chủ </a>
+                    <a class="header-links" href="#benefits"> Lợi ích </a>
+                    <a class="header-links" href="#book"> Tải về </a>
+                    <a class="header-links" href="#articles"> Bài viết </a>
+                    <a class="header-links" href="#faq"> FAQ </a>
+                </div>
+                <div
+                    class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center"
+                >
+                    <a
+                        href="#book"
+                        aria-label="download"
+                        class="tw-rounded-md tw-border-[1px] tw-border-black tw-bg-transparent tw-px-3 tw-py-2 tw-text-black tw-transition-colors tw-duration-[0.3s] hover:tw-bg-black hover:tw-text-white"
+                    >
+                        <span>Download</span>
+                        <i class="bi bi-download"></i>
+                    </a>
+                </div>
+            </div>
+            <button
+                class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-black lg:tw-hidden"
+                onclick="toggleHeader()"
+                aria-label="menu"
+                id="collapse-btn"
+            ></button>
+        </header>
+
+        <section
+            class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-md:tw-mt-[50px]"
+            id="hero-section"
+        >   
+
+            <div class="tw-w-full tw-h-full tw-p-[5%]
+                        tw-place-content-center tw-min-h-[100vh]
+                        tw-gap-6 max-xl:tw-place-items-center
+                        tw-flex max-xl:tw-flex-col">
+                    <div
+                        class="tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-max-w-[50%] tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-p-4"
+                    >
+                        <div
+                            class="tw-flex tw-flex-col tw-place-content-center tw-items-center"
+                        >
+                            <div
+                                class="reveal-up tw-text-center tw-text-6xl tw-font-semibold tw-uppercase tw-leading-[80px] max-lg:tw-text-4xl max-md:tw-leading-snug"
+                            >
+                                <span class=""> Lên lịch thông minh </span>
+                                <br />
+                                <span class=""> Kết nối tức thì </span>
+                            </div>
+                            
+                        </div>
+
+                        <div class="tw-flex tw-flex-col tw-w-full tw-place-items-center tw-place-content-center">
+                            <div
+                                class="reveal-up tw-mt-3 tw-max-w-[450px] tw-p-2 tw-text-center tw-text-gray-700 max-lg:tw-max-w-full"
+                            >
+                                NexTime giúp bạn tìm ra khung giờ rảnh chung của cả nhóm chỉ trong vài giây với công nghệ xếp chồng lịch trình đột phá.
+                            </div>
+
+                            <div
+                                class="reveal-up tw-mt-10 tw-flex tw-place-items-center tw-gap-4"
+                            >
+                                <a
+                                    class="btn tw-bg-[#7e22ce85] tw-shadow-lg tw-shadow-primary tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
+                                    href="#book"
+                                >
+                                    Bắt đầu ngay
+                                </a>
+                                <a
+                                    class="btn tw-flex tw-gap-2 !tw-border-solid !tw-border-[1px] !tw-border-black !tw-text-black !tw-bg-transparent tw-transition-colors tw-duration-[0.3s] hover:!tw-bg-white hover:!tw-text-black"
+                                    href="#benefits"
+                                >
+                                    <i class="bi bi-play-circle-fill"></i>
+                                    <span>Tìm hiểu thêm</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal-up tw-max-w-[750px]  tw-max-h-[100vh] tw-w-full tw-flex tw-place-content-center tw-overflow-hidden">
+                        <div class="tw-relative tw-max-w-[450px] slide-in tw-flex tw-place-content-center">
+                            <div class="tw-overflow-hidden">
+                                <img src="./assets/images/home/phone_frame.png" 
+                                        alt="phone frame" class="tw-h-full" srcset="">
+                            </div>
+                            <div class="tw-absolute tw-bottom-10 tw-max-h-[350px] tw-overflow-hidden">
+                                <div class="swiper slideshow-container 
+                                            tw-p-5 tw-max-h-[350px] tw-relative
+                                            tw-max-w-[350px]
+                                            max-lg:tw-max-w-[300px]
+                                            max-lg:tw-max-h-[260px]
+                                            max-lg:!tw-mt-10 ">
+
+                                    <div class="swiper-wrapper tw-w-full tw-max-h-[650px]  tw-relative"
+                                                id="slideshow" >      
+                                    <!-- App UI images will be loaded via index.js -->
+                                    </div>
+                                    <p class="prev">&#10094;</p>
+                                    <p class="next">&#10095;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+            </div>
+        </section>
+
+        <section
+            class="tw-relative tw-flex tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-8"
+        >
+            <h2 class="reveal-up tw-text-xl tw-text-gray-400 tw-font-medium tw-uppercase tw-tracking-widest">
+                Được tin dùng bởi hàng ngàn đội ngũ
+            </h2>
+
+            <div class="reveal-up carousel-container">
+                <div
+                    class="carousel lg:w-place-content-center tw-mt-6 tw-flex tw-w-full tw-gap-5 max-md:tw-gap-2"
+                >
+                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                        <img src="./assets/images/brand-logos/google.svg" alt="Google" class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"/>
+                    </div>
+                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                        <img src="./assets/images/brand-logos/microsoft.svg" alt="Microsoft" class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"/>
+                    </div>
+                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                        <img src="./assets/images/brand-logos/slack.svg" alt="Slack" class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"/>
+                    </div>
+                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                        <img src="./assets/images/brand-logos/notion.svg" alt="Notion" class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"/>
+                    </div>
+                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
+                        <img src="./assets/images/brand-logos/zoom.svg" alt="Zoom" class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="tw-relative tw-flex tw-w-full tw-min-h-[60vh] tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-8"
+        >
+            <div class="reveal-up tw-flex tw-border-[1px] max-lg:tw-w-full tw-border-black tw-rounded-md tw-p-2 tw-max-w-[850px] tw-w-[1000px] tw-min-h-[550px] max-lg:tw-min-w-[320px] max-lg:tw-min-h-[250px] max-lg:tw-h-auto">
+                <div class="tw-relative tw-bg-black tw-min-w-full tw-min-h-full tw-overflow-clip tw-rounded-md">
+                    <iframe class="tw-absolute tw-top-[50%] tw--translate-y-[50%] tw-left-[50%] tw--translate-x-[50%] tw-w-full tw-h-full" src="https://www.youtube.com/embed/WrfN3iJzrWs?si=BEQ4iPK9NXSM_fkk&amp;controls=0&rel=0&showinfo=0&autoplay=1&loop=1&mute=1" title="NexTime Promo Video" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits"
+            class="tw-relative tw-mt-10 tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-items-center lg:tw-p-6"
+        >
+            <h2 class="tw-text-4xl max-md:tw-text-3xl tw-font-bold">Trải nghiệm những lợi ích chính</h2>
+            
+            <div
+                class="reveal-up tw-mt-[5%] tw-flex tw-h-full tw-w-full tw-place-content-center tw-gap-8 tw-p-4 max-lg:tw-max-w-full max-lg:tw-flex-col"
+            >
+                <div
+                    class="tw-flex tw-flex-col tw-gap-[200px] tw-h-full tw-max-w-[50%] max-lg:tw-max-w-full tw-px-[10%] max-lg:tw-px-4 max-lg:tw-gap-16 max-lg:tw-w-full lg:tw-top-[20%]"
+                >   
+                    <div class="tw-flex tw-gap-6">
+                        <div class="tw-w-[80px] tw-h-[80px] tw-min-w-[80px] tw-min-h-[80px] tw-text-5xl max-lg:tw-min-h-[60px] max-lg:tw-min-w-[60px]">
+                            <i class="bi bi-layers-half"></i>
+                        </div>
+                        <h3 class="tw-text-4xl max-lg:tw-text-2xl max-lg:tw-font-normal">
+                            Xếp chồng lịch trình (Schedule Overlay) thông minh
+                        </h3>
+                    </div>
+
+                    <div class="tw-flex tw-gap-6">
+                        <div class="tw-w-[80px] tw-h-[80px] tw-text-5xl tw-min-w-[80px] tw-min-h-[80px] max-lg:tw-min-h-[60px]">
+                            <i class="bi bi-lightning-fill"></i>
+                        </div>
+                        <h3 class="tw-text-4xl max-lg:tw-text-2xl max-lg:tw-font-normal">
+                            Chuyển tin nhắn thành Checklist (Prompt to Checklist) tức thì
+                        </h3>
+                    </div>
+
+                    <div class="tw-flex tw-gap-6">
+                        <div class="tw-w-[80px] tw-text-5xl tw-h-[80px] tw-min-w-[80px] tw-min-h-[80px]">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3 class="tw-text-4xl max-lg:tw-text-2xl max-lg:tw-font-normal">
+                            Bảo mật quyền riêng tư lịch cá nhân tuyệt đối
+                        </h3>
+                    </div>
+
+                    <div class="tw-flex tw-gap-6">
+                        <div class="tw-w-[80px] tw-text-5xl tw-h-[80px] tw-min-w-[80px] tw-min-h-[80px]">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h3 class="tw-text-4xl max-lg:tw-text-2xl max-lg:tw-font-normal">
+                            Quản lý nhóm và cộng tác hiệu quả hơn bao giờ hết
+                        </h3>
+                    </div>
+                </div>
+
+                <div
+                    class="tw-relative tw-flex tw-max-w-[30%] max-lg:tw-max-w-full tw-flex-col tw-place-items-start tw-gap-4  tw-p-2 max-lg:tw-place-items-center max-lg:tw-place-content-center max-lg:tw-w-full"
+                >
+                    <div
+                        class="tw-top-20 lg:tw-sticky tw-max-h-[800px] tw-h-full tw-max-w-[850px] max-lg:tw-max-h-fit max-lg:tw-max-w-[320px] tw-overflow-hidden tw-rounded-lg shadow-2xl"
+                    >
+                        <img
+                            src="./assets/images/home/app_preview_1.png"
+                            alt="NexTime App Preview"
+                            class="tw-h-full tw-w-full tw-object-contain"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section
+            class="tw-relative tw-mt-10 tw-flex tw-min-h-[20vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-items-center lg:tw-p-6"
+        >
+            <div class="tw-w-full tw-flex tw-mt-8 tw-h-fit tw-max-w-[100vw] tw-overflow-hidden tw-relative">
+                <div class="edge-gradient tw-z-10 tw-absolute tw-w-full tw-h-full tw-left-0"></div>
+                <div class="countries-container scroller tw-flex tw-w-full tw-gap-3" data-direction="right" ></div>
+            </div>
+            <div class="tw-w-full tw-flex tw-relative tw-h-fit tw-mt-8 tw-max-w-[100vw] tw-overflow-hidden">
+                <div class="edge-gradient tw-z-10 tw-absolute tw-w-full tw-h-full tw-left-0"></div>
+                <div class="places-container scroller tw-flex tw-w-full tw-gap-3" data-direction="left" data-speed="slow" ></div>
+            </div>
+        </section>
+
+        <section class="tw-w-full tw-flex tw-flex-col tw-place-content-center tw-px-[10%] tw-p-4 tw-gap-[10%] tw-place-items-center max-md:tw-flex-col tw-overflow-hidden tw-min-h-[30vh]" id="book">
+            <h2 class="tw-text-3xl max-md:tw-text-2xl tw-mt-7 tw-font-bold">
+                Lên kế hoạch cho buổi hẹn tiếp theo ngay bây giờ
+            </h2>
+
+            <a href="" class="btn !tw-text-black !tw-bg-transparent tw-flex tw-gap-2 !tw-border-[1px] !tw-border-black tw-mt-[2%] max-md:tw-mt-8 hover:tw-scale-105 tw-duration-[0.3s]">
+                <span>Tải bản Beta ngay</span>
+                <i class="bi bi-send-fill"></i>
+            </a>
+
+            <div class="tw-flex max-md:tw-mt-8 tw-place-items-center tw-mt-[5%] tw-gap-6">
+                <div>
+                    <img src="./assets/images/brand-logos/app-store-badge.png" alt="App Store" class="tw-max-w-[150px] tw-h-[50px]">
+                </div>
+                <div>
+                    <img src="./assets/images/brand-logos/google-play-badge.png" alt="Google Play" class="tw-max-w-[150px] tw-h-[50px]">
+                </div>
+            </div>
+        </section>
+
+        <section id="articles"
+            class="tw-mt-5 tw-flex tw-min-h-[80vh] tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%] max-lg:tw-p-3"
+        >
+            <h3 class="reveal-up tw-text-center tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+                Cẩm nang tối ưu năng suất ✨
+            </h3>
+            <div class="reveal-up tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-10 max-lg:tw-flex-col">
+                <a href="" class="tw-flex tw-border-[1px] tw-border-black tw-h-[400px] tw-w-[400px] tw-flex-col tw-gap-4 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[300px]">
+                    <div class="tw-h-[250px] tw-w-full tw-overflow-hidden tw-rounded-md">
+                        <img src="./assets/images/home/article_1.jpg" alt="article cover" class="tw-h-full tw-w-full tw-object-cover tw-transition-transform tw-duration-[0.3s] hover:tw-scale-[1.04]"/>
+                    </div>
+                    <h3 class="tw-mt-2 tw-text-2xl tw-font-semibold">Bí kíp họp nhóm 0% stress</h3>
+                    <p class="tw-text-gray-800">Làm thế nào để Schedule Overlay giúp nhóm bạn tiết kiệm 2 tiếng mỗi tuần.</p>
+                    <span>
+                        <span>Đọc thêm</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </span>
+                </a>
+                <a href="" class="tw-border-[1px] tw-border-black tw-flex tw-h-[400px] tw-w-[400px] tw-flex-col tw-gap-4 tw-overflow-clip tw-rounded-lg tw-p-4 max-lg:tw-w-[300px]">
+                    <div class="tw-h-[250px] tw-w-full tw-overflow-hidden tw-rounded-md">
+                        <img src="./assets/images/home/article_2.jpg" alt="article cover" class="tw-h-full tw-w-full tw-object-cover tw-transition-transform tw-duration-[0.3s] hover:tw-scale-[1.04]"/>
+                    </div>
+                    <h3 class="tw-mt-2 tw-text-2xl tw-font-semibold">AI Assistant trong tay bạn</h3>
+                    <p class="tw-text-gray-800">Sử dụng Prompt to Checklist để biến mọi ý tưởng thành hành động cụ thể.</p>
+                    <span>
+                        <span>Đọc thêm</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <section id="faq"
+            class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%]"
+        >
+            <h3 class="tw-text-4xl tw-font-medium tw-text-gray-800 max-md:tw-text-2xl">Câu hỏi thường gặp</h3>
+            <div class="tw-mt-10 tw-flex tw-min-h-[300px] tw-w-full tw-max-w-[850px] tw-flex-col tw-gap-4">
+                <div class="faq tw-w-full">
+                    <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg font-bold">
+                        <span>NexTime có bảo mật dữ liệu lịch của tôi không?</span>
+                        <i class="bi bi-plus tw-ml-auto tw-font-semibold"></i>
+                    </div>
+                    <div class="content">Chắc chắn rồi. NexTime chỉ sử dụng các khoảng thời gian bận/rảnh để tính toán lịch chung, thông tin chi tiết về sự kiện của bạn luôn được mã hóa đầu cuối.</div>
+                </div>
+
+                <div class="faq tw-w-full">
+                    <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg font-bold">
+                        <span>Làm thế nào để dùng Prompt to Checklist?</span>
+                        <i class="bi bi-plus tw-ml-auto tw-font-semibold"></i>
+                    </div>
+                    <div class="content">Bạn chỉ cần gõ nội dung như "Checklist chia tiền đặt sân 300k" hoặc "Checklist deadline dự án ngày 15/3", NexTime sẽ tự động nhận diện và tạo bảng công việc.</div>
+                </div>
+
+                <div class="faq tw-w-full">
+                    <div class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg font-bold">
+                        <span>NexTime có bản dành cho Desktop không?</span>
+                        <i class="bi bi-plus tw-ml-auto tw-font-semibold"></i>
+                    </div>
+                    <div class="content">Hiện tại chúng tôi tập trung tối ưu cho trải nghiệm di động. Bản Web Dashboard sẽ sớm ra mắt vào cuối năm nay.</div>
+                </div>
+            </div>
+
+            <div class="tw-mt-20 tw-flex tw-flex-col tw-place-items-center tw-gap-4">
+                <div class="tw-text-3xl max-md:tw-text-2xl">Vẫn còn thắc mắc?</div>
+                <a href="mailto:support@nextime.app" class="btn !tw-rounded-full !tw-bg-black !tw-text-white">Liên hệ hỗ trợ</a>
+            </div>
+        </section>
+
+        <section
+            class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%] max-md:tw-px-2"
+        >
+            <div class="tw-bg-gray-100 tw-border-[1px] tw-border-black tw-h-[550px] tw-flex max-lg:tw-flex-col tw-max-h-[550px] tw-max-w-[80%] max-lg:tw-max-h-fit max-lg:tw-h-full max-lg:tw-max-w-full tw-overflow-hidden tw-rounded-xl tw-w-full">
+                <div class="tw-flex tw-flex-col tw-h-full tw-place-content-center tw-gap-3 tw-p-10 max-md:tw-max-w-full">
+                    <div class="tw-flex tw-flex-col tw-gap-1">
+                        <h2 class="tw-text-3xl tw-text-black max-md:tw-text-xl tw-font-bold">Gia nhập cộng đồng NexTime</h2>
+                        <div class="tw-text-gray-800">Nhận thông báo về các tính năng mới nhất và ưu đãi cho người dùng sớm.</div>
+                    </div>
+
+                    <div class="tw-flex tw-h-[60px] tw-place-items-center tw-gap-2 tw-py-2 tw-overflow-hidden mt-4">
+                        <input type="email" class="input tw-h-full tw-w-full !tw-border-gray-600 tw-p-2 tw-outline-none" placeholder="Email của bạn"/>
+                        <a class="btn !tw-rounded-full !tw-text-gray-800 !tw-border-[1px] !tw-border-solid !tw-border-gray-800 !tw-bg-transparent tw-transition-colors tw-duration-[0.3s] hover:!tw-bg-black hover:!tw-text-white" href="">
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="tw-max-w-[60%] tw-w-full tw-h-full tw-flex max-lg:tw-max-w-full tw-place-content-end tw-place-items-center">
+                    <img src="./assets/images/home/phone_footer.png" alt="footer mockup" class="tw-h-full tw-max-h-[90%] tw-object-contain">
+                </div>
+            </div>
+        </section>
+
+        <footer
+            class="tw-mt-auto tw-flex tw-w-full tw-place-content-around tw-gap-3 tw-p-[5%] tw-px-[10%] tw-bg-white tw-text-black tw-border-t tw-border-gray-200 max-md:tw-flex-col"
+        >
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-place-items-center tw-gap-6 max-md:tw-w-full">
+                <img src="./assets/logo/logo.png" alt="logo" class="tw-max-w-[120px]"/>
+                
+                <div class="tw-text-center">HCMUT,<br />P Linh Xuân, TP. Hồ Chí Minh</div>
+                <div class="tw-mt-3 tw-text-lg tw-font-semibold">Follow us</div>
+                <div class="tw-flex tw-gap-4 tw-text-2xl">
+                    <a href="" aria-label="Facebook" class="hover:tw-text-blue-600"><i class="bi bi-facebook"></i></a>
+                    <a href="" aria-label="Twitter" class="hover:tw-text-gray-700"><i class="bi bi-twitter-x"></i></a>
+                    <a href="" aria-label="Instagram" class="hover:tw-text-pink-600"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+                <h2 class="tw-text-3xl max-md:tw-text-xl tw-font-bold">Ứng dụng</h2>
+                <div class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm tw-text-gray-600">
+                    <a href="" class="footer-link hover:tw-text-black">Lịch rảnh nhóm</a>
+                    <a href="" class="footer-link hover:tw-text-black">AI Checklist</a>
+                    <a href="" class="footer-link hover:tw-text-black">Bảo mật thông tin</a>
+                    <a href="" class="footer-link hover:tw-text-black">Hợp tác</a>
+                </div>
+            </div>
+
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+                <h2 class="tw-text-3xl max-md:tw-text-xl tw-font-bold">Hỗ trợ</h2>
+                <div class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm tw-text-gray-600">
+                    <a href="" class="footer-link hover:tw-text-black">Về chúng tôi</a>
+                    <a href="" class="footer-link hover:tw-text-black">FAQ</a>
+                    <a href="" class="footer-link hover:tw-text-black">Contact Us</a>
+                    <a href="" class="footer-link hover:tw-text-black">Privacy policy</a>
+                </div>
+            </div>
+        </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" />
+    <script src="./index.js"></script>
+</html>
