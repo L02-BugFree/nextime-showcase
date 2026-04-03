@@ -9,9 +9,8 @@
 
 html {
     scroll-behavior: smooth;
-    font-family: "Ubuntu", sans-serif;
+    font-family: "Google Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
 .tw-text-primary-blue {
     color: var(--primary-blue);
 }
