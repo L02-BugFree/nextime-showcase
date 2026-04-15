@@ -106,3 +106,192 @@ header > .collapsible-header{
     }
     .header-links { color: #fff; }
 }
+
+footer {
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.95rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    border: 1px solid rgba(15,23,42,0.08);
+    box-shadow: 0 18px 40px rgba(15,23,42,0.08);
+    background: #111827;
+    color: #ffffff;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 22px 50px rgba(15,23,42,0.12);
+}
+
+.btn-primary {
+    background: #111827;
+    color: #ffffff;
+}
+
+.btn-outline {
+    background: rgba(255,255,255,0.96);
+    color: #111827;
+}
+
+.btn-outline:hover {
+    background: #111827;
+    color: #ffffff;
+    border-color: transparent;
+}
+
+.hero-section {
+    background-image: radial-gradient(circle at top left, rgba(59,130,246,0.14), transparent 24%), radial-gradient(circle at bottom right, rgba(99,102,241,0.08), transparent 24%);
+}
+
+.hero-stat {
+    background: rgba(255,255,255,0.88);
+    border: 1px solid rgba(15,23,42,0.06);
+    border-radius: 24px;
+    box-shadow: 0 28px 90px rgba(15,23,42,0.08);
+    padding: 1.2rem 1.25rem;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.feature-card {
+    background: rgba(255,255,255,0.96);
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 0 32px 70px rgba(15,23,42,0.06);
+    border: 1px solid rgba(15,23,42,0.08);
+}
+
+.article-card {
+    background: #ffffff;
+    box-shadow: 0 30px 75px rgba(15,23,42,0.05);
+    border-radius: 28px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 40px 90px rgba(15,23,42,0.1);
+}
+
+.faq {
+    background: #ffffff;
+    border-radius: 26px;
+    border: 1px solid rgba(15,23,42,0.08);
+    padding: 1.25rem;
+    box-shadow: 0 20px 50px rgba(15,23,42,0.05);
+}
+
+.faq-accordion {
+    padding: 1rem 1.15rem;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.faq-accordion:hover {
+    color: #1d4ed8;
+}
+
+.faq .content {
+    padding: 0 1.15rem 1rem;
+}
+
+.footer-link {
+    color: #475569;
+    transition: color 0.25s ease;
+}
+
+.footer-link:hover {
+    color: #111827;
+}
+
+.countries-container div,
+.places-container div {
+    background: rgba(255,255,255,0.92);
+    border-color: rgba(15,23,42,0.12);
+    box-shadow: 0 16px 35px rgba(15,23,42,0.06);
+}
+
+/* New visual enhancements */
+.hero-decor {
+    position: absolute;
+    right: -10%;
+    top: -10%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle at 30% 20%, rgba(124,58,237,0.18), transparent 25%), radial-gradient(circle at 80% 80%, rgba(59,130,246,0.12), transparent 30%);
+    filter: blur(40px);
+    transform: rotate(12deg);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-title-gradient {
+    background: linear-gradient(90deg, #0ea5e9, #7c3aed, #f97316);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.btn-hero {
+    background: linear-gradient(90deg,#7c3aed 0%, #06b6d4 100%);
+    color: #fff;
+    box-shadow: 0 24px 80px rgba(124,58,237,0.18);
+}
+
+/* Slightly larger hero copy and spacing */
+.hero-section .reveal-up.tw-text-5xl {
+    font-size: 3.25rem;
+    line-height: 1.02;
+}
+
+/* Header visual polish */
+header {
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.35));
+}
+
+/* Subtle floating animation for hero mockup */
+.slide-in { animation: floaty 6s ease-in-out infinite; }
+@keyframes floaty { 0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)} }
+
+/* Chat sample helpers */
+.scrollbar-hidden{ -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hidden::-webkit-scrollbar{ display: none; }
+
+/* small responsive tweak for the chat mockup */
+@media (max-width: 640px){
+    .tw-w\[340px\] { width: 300px !important; }
+    .tw-h\[680px\] { height: 620px !important; }
+}
+
+/* Styles for the chat feature image cards */
+.chat-feature-images { gap: 0.75rem; }
+.chat-feature-images .feature-card-mini img { display: block; }
+.chat-feature-images .feature-card-mini { display: flex; flex-direction: column; justify-content: flex-start; }
+.chat-feature-images .feature-card-mini div { background: transparent; }
+
+@media (max-width: 420px){
+    .chat-feature-images { flex-direction: column; }
+    .chat-feature-images .feature-card-mini { width: 100% !important; }
+}
+
+/* Schedule stack (three images) styling */
+.schedule-stack img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.schedule-stack { padding: 0.25rem; }
+
+@media (max-width: 1024px){
+    .tw-w\[30%\] { width: 40% !important; }
+}
+
+
